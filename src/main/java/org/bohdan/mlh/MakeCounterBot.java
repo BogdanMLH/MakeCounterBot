@@ -102,7 +102,7 @@ public class MakeCounterBot extends TelegramLongPollingBot {
         message.setText("\uD83D\uDC4B<b>Cześć!</b>" +
                 "\n\nBot ten został stworzony do szybkiego liczenia produktów w chłodnie.\uD83D\uDCF2" +
                 "\n\n<b>Proszę wpisywać wartości ułamkowe oddzielone kropką, przykład: 0.5</b>" +
-                "\n\nAby rozpocząć nowe liczenie, kliknij <b>/Rozpocznij_liczenie</b>.");
+                "\n\nAby rozpocząć nowe liczenie, kliknij <b>/rozpocznij_liczenie</b>.");
         message.setParseMode("HTML");
 
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
