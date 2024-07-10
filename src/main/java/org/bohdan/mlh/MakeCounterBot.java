@@ -108,7 +108,7 @@ public class MakeCounterBot extends TelegramLongPollingBot {
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
         List<KeyboardRow> keyboard = new ArrayList<>();
         KeyboardRow row = new KeyboardRow();
-        row.add("/Rozpocznij_liczenie");
+        row.add("/rozpocznij_liczenie");
         keyboard.add(row);
         keyboardMarkup.setKeyboard(keyboard);
         keyboardMarkup.setOneTimeKeyboard(true);
