@@ -67,17 +67,25 @@ public class MakeCounterBot extends TelegramLongPollingBot {
             Message message = update.getMessage();
             String text = message.getText();
 
-            if ("/start".equals(text) || "/Zakoncz_liczenie".equals(text)) {
+            if ("/start".equals(text) || ("/zakoncz_liczenie".equals(text) && isCounting)) {
                 sendStartMessage(message.getChatId());
-            } else if ("/Rozpocznij_liczenie".equalsIgnoreCase(text)) {
+            } else if (("/zakoncz_liczenie".equals(text) || "/Edytuj_ostatnia_wartosc".equals(text)) && !isCounting) {
+                sendNotCountingMessage(message.getChatId());
+            } else if ("/rozpocznij_liczenie".equals(text)) {
                 startCounting(message.getChatId());
             } else if (isCounting && isNumeric(text)) {
                 productsQuan.add(Double.parseDouble(text));
-                if (questionIndex < questions.length-1 && isCounting) {
+                if (questionIndex < questions.length - 1 && isCounting) {
                     questionIndex++;
                     sendQuestion(message.getChatId());
                 } else {
                     sendProductQuan(message.getChatId());
+                }
+            } else if ("/Edytuj_ostatnia_wartosc".equals(text)) {
+                if(questionIndex > 0){
+                    productsQuan.remove(questionIndex-1);
+                    questionIndex--;
+                    sendQuestion(message.getChatId());
                 }
             } else {
                 sendInvalidOptionMessage(message.getChatId());
@@ -131,21 +139,6 @@ public class MakeCounterBot extends TelegramLongPollingBot {
         SendMessage message = new SendMessage();
         message.setChatId(chatId.toString());
         message.setText(questions[questionIndex]);
-
-        ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
-        List<KeyboardRow> keyboard = new ArrayList<>();
-
-        KeyboardRow row = new KeyboardRow();
-        row.add(new KeyboardButton("/Zakoncz_liczenie"));
-        row.add(new KeyboardButton("/Rozpocznij_liczenie"));
-        row.add(new KeyboardButton("/Edytuj_ostatnia_wartosc"));
-
-        keyboard.add(row);
-        keyboardMarkup.setKeyboard(keyboard);
-        keyboardMarkup.setOneTimeKeyboard(false);
-        keyboardMarkup.setResizeKeyboard(true);
-
-        message.setReplyMarkup(keyboardMarkup);
 
         try {
             execute(message);
@@ -317,6 +310,18 @@ public class MakeCounterBot extends TelegramLongPollingBot {
         SendMessage message = new SendMessage();
         message.setChatId(chatId.toString());
         message.setText("Nie ma takiej opcji.");
+
+        try {
+            execute(message);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void sendNotCountingMessage(Long chatId) {
+        SendMessage message = new SendMessage();
+        message.setChatId(chatId.toString());
+        message.setText("W tej chwili nie ma żadnego liczenia.");
 
         try {
             execute(message);
