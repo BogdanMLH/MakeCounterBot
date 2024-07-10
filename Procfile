@@ -1,1 +1,1 @@
-worker: java -jar target/MakeCounterBot-2.jar
+web: java -jar target/MakeCounterBot-2.jar
