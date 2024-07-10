@@ -9,6 +9,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
@@ -133,11 +134,15 @@ public class MakeCounterBot extends TelegramLongPollingBot {
 
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
         List<KeyboardRow> keyboard = new ArrayList<>();
+
         KeyboardRow row = new KeyboardRow();
-        row.add("/Zakoncz_liczenie");
+        row.add(new KeyboardButton("/Zakoncz_liczenie"));
+        row.add(new KeyboardButton("/Rozpocznij_liczenie"));
+        row.add(new KeyboardButton("/Edytuj_ostatnia_wartosc"));
+
         keyboard.add(row);
         keyboardMarkup.setKeyboard(keyboard);
-        keyboardMarkup.setOneTimeKeyboard(true);
+        keyboardMarkup.setOneTimeKeyboard(false);
         keyboardMarkup.setResizeKeyboard(true);
 
         message.setReplyMarkup(keyboardMarkup);
