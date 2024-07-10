@@ -68,7 +68,7 @@ public class MakeCounterBot extends TelegramLongPollingBot {
 
             if ("/start".equals(text) || ("/zakoncz_liczenie".equals(text) && isCounting)) {
                 sendStartMessage(message.getChatId());
-            } else if (("/zakoncz_liczenie".equals(text) || "/Edytuj_ostatnia_wartosc".equals(text)) && !isCounting) {
+            } else if (("/zakoncz_liczenie".equals(text) || "/edytuj_ostatnia_wartosc".equals(text)) && !isCounting) {
                 sendNotCountingMessage(message.getChatId());
             } else if ("/rozpocznij_liczenie".equals(text)) {
                 startCounting(message.getChatId());
@@ -80,7 +80,7 @@ public class MakeCounterBot extends TelegramLongPollingBot {
                 } else {
                     sendProductQuan(message.getChatId());
                 }
-            } else if ("/Edytuj_ostatnia_wartosc".equals(text)) {
+            } else if ("/edytuj_ostatnia_wartosc".equals(text)) {
                 if(questionIndex > 0){
                     productsQuan.remove(questionIndex-1);
                     questionIndex--;
