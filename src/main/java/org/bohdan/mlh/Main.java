@@ -8,8 +8,8 @@ import static spark.Spark.*;
 
 public class Main {
     public static void main(String[] args) {
-        port(getHerokuAssignedPort());
-        get("/", (req, res) -> "Hello, I am alive!");
+        //port(getHerokuAssignedPort());
+        //get("/", (req, res) -> "Hello, I am alive!");
         try {
             TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
             botsApi.registerBot(new MakeCounterBot());
@@ -17,7 +17,7 @@ public class Main {
             e.printStackTrace();
         }
     }
-
+    /*
     static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
         if (processBuilder.environment().get("PORT") != null) {
@@ -25,5 +25,6 @@ public class Main {
         }
         return 4567;
     }
+     */
 }
 
