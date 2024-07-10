@@ -84,8 +84,8 @@ public class MakeCounterBot extends TelegramLongPollingBot {
                 if(questionIndex > 0){
                     productsQuan.remove(questionIndex-1);
                     questionIndex--;
-                    sendQuestion(message.getChatId());
                 }
+                sendQuestion(message.getChatId());
             } else {
                 sendInvalidOptionMessage(message.getChatId());
             }
