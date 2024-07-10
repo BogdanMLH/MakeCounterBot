@@ -274,7 +274,7 @@ public class MakeCounterBot extends TelegramLongPollingBot {
         }
 
 
-        response.append("\n\nAby rozpocząć nowe liczenie, kliknij <b>/Rozpocznij_liczenie</b>.");
+        response.append("\n\nAby rozpocząć nowe liczenie, kliknij <b>/rozpocznij_liczenie</b>.");
         SendMessage message = new SendMessage();
         message.setChatId(chatId.toString());
         message.setText(response.toString());
