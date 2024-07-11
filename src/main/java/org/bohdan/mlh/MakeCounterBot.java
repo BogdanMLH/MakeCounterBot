@@ -262,12 +262,12 @@ public class MakeCounterBot extends TelegramLongPollingBot {
         for (int i = 0; i < productsQuan.size() - 3; i++) {
             if (productsQuan.get(i) != 0) {
                 String questionWithoutParentheses = questions[i].replaceAll("\\(.*?\\)", "").trim();
-                if (i <= 9 || i == 13 || i == 14 || i == 15) {
-                    response.append(questionWithoutParentheses).append("  <b><i>(Chłodnia)</i></b>");
-                } else if (i == 10 || i == 11) {
+                if (i == 11) {
+                    response.append(questionWithoutParentheses).append("  <b><i>(Ciasto)</i></b>");
+                } else if (i == 10 || i == 12) {
                     response.append(questionWithoutParentheses).append("  <b><i>(Zapiekaron)</i></b>");
                 } else {
-                    response.append(questionWithoutParentheses).append("  <b><i>(Ciasto)</i></b>");
+                    response.append(questionWithoutParentheses).append("  <b><i>(Chłodnia)</i></b>");
                 }
                 response.append(" X ").append(Math.abs(productsQuan.get(i))).append("\n");
             }
