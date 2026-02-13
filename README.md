@@ -15,7 +15,7 @@ A specialized Telegram Bot developed to digitize and automate routine counting p
 * **The Problem:** Manual tracking of products was slow and error-prone during peak hours.
 * **The Solution:** A Java-based bot that allows staff to input data via simple commands. The bot calculates totals and generates end-of-shift reports automatically.
 * **The Result:** Reduced calculation errors and saved 30 minutes per shift for the manager and workers.
-<img width="739" height="1280" alt="image" src="https://github.com/user-attachments/assets/584ab64d-bb61-4677-9dbc-081ddc962bfa" />
+<img width="73.9" height="128" alt="image" src="https://github.com/user-attachments/assets/584ab64d-bb61-4677-9dbc-081ddc962bfa" />
 
 
 ## 🛠️ Technical Implementation
